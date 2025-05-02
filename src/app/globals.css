@@ -45,3 +45,49 @@
 :root[data-theme="pastel"] {
   background-color: var(--color-background-pastel);
 }
+
+.triangle {
+  width: 100%;
+  aspect-ratio: 1;
+  clip-path: polygon(50% 0,100% 100%,0 100%);
+}
+
+.triangle-rounded {
+  --radius: 8px;
+  --width: 50px
+
+  width: var(--width);
+  aspect-ratio: 1/cos(30deg);
+  --_g:calc(tan(60deg)*var(--radius)) bottom var(--radius),#000 98%,#0000 101%;
+  mask:
+    /* a conic gradient to fill the middle area */
+    conic-gradient(from -30deg at 50% calc(200% - 3*var(--radius)/2),#000 60deg,#0000 0)
+     0 100%/100% calc(100% - 3*var(--radius)/2) no-repeat,
+    /* 3 radial gradients for 3 circles */
+    radial-gradient(var(--radius) at 50% calc(2*var(--radius)),#000 98%,#0000 101%),
+    radial-gradient(var(--radius) at left  var(--_g)),
+    radial-gradient(var(--radius) at right var(--_g));
+  /* the 3-point polygon */
+  clip-path: polygon(50% 0,100% 100%,0 100%);
+}
+
+@media (min-width: 640px) {
+  .triangle-rounded {
+    --radius: 6px;
+    --width: 30px;
+  }
+}
+
+@media (min-width: 768px) {
+  .triangle-rounded {
+    --radius: 7px;
+    --width: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .triangle-rounded {
+    --radius: 8px;
+    --width: 50px;
+  }
+}

@@ -1,10 +1,13 @@
 import { ThemeButtons } from "@/components/features/theme-buttons";
+import { TriangleToggleButton } from "@/components/ui/triangle-toggle-button";
 
 export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-8 p-4">
-      <h1 className="text-3xl font-semibold text-center">
+      <TriangleToggleButton values={{ left: "light", top: "pastel", right: "dark" }} labelPosition="TOP" />
+
+      {/* <h1 className="text-3xl font-semibold text-center">
         Tailwind CSS v4.0 Theme Colors Example
       </h1>
       <div className="container mx-auto flex flex-wrap items-center justify-center gap-4">
@@ -26,7 +29,8 @@ export default function Home() {
           <span>bg-card</span>
         </div>
         <ThemeButtons />
-      </div>
+      </div> */}
+      
     </div>
   );
 }
