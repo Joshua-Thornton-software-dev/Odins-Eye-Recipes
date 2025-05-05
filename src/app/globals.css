@@ -8,12 +8,13 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  --color-card: hsl(207 97% 12%);
-  --color-accent: hsl(190 92% 66%);
   --color-background-light: hsl(0 0% 100%);
   --color-background-dark: hsl(207 95% 8%);
   --color-background-custom: hsl(187 71% 82%);
   --color-background-pastel: hsl(279 100% 93%);
+  --color-card: hsl(207 97% 12%);
+  --color-accent: hsl(190 92% 66%);
+  --percent-triangle-thumb-offset: 8%;
 }
 
 @layer base {
@@ -22,8 +23,8 @@
     --color-accent: hsl(190 92% 66%);
   }
   [data-theme="dark"] {
-    --color-card: hsl(0 0% 96%);
-    --color-accent: hsl(225 73% 43%);
+    --color-card: hsl(261, 100%, 66%);
+    --color-accent: hsl(0 0% 96%);
   }
   [data-theme="custom"] {
     --color-card: hsl(182, 87%, 39%);
@@ -62,27 +63,27 @@
 /* The thumb of the 3-way toggle triangle should also have the triangle class, plus the thumb. It is meant to fit inside a corner of the larger triangle.*/
 .triangle .thumb {
   position: absolute;
-  width: 30%;
+  width: 42%;
   background-color: var(--color-accent);
 }
 
 .triangle.thumb.leftOption,
 .triangle.thumb.thumb.rightOption {
-  bottom: 5%;
+  bottom: calc(var(--percent-triangle-thumb-offset) - 2%);
 }
 
 .triangle.thumb.leftOption {
-  left: 5%;
+  left: var(--percent-triangle-thumb-offset);
 }
 
 .triangle.thumb.topOption {
-  top: 5%;
+  top: var(--percent-triangle-thumb-offset);
   left: 50%;
   transform: translateX(-50%);
 }
 
 .triangle.thumb.rightOption {
-  right: 5%;
+  right: var(--percent-triangle-thumb-offset);
 }
 
 .triangle-rounded {

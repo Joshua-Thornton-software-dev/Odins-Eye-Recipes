@@ -1,6 +1,6 @@
 "use client";
 
-import { MouseEventHandler, useState } from "react";
+import { useState } from "react";
 
 interface ToggleButtonOption {
     value: string,
@@ -48,7 +48,7 @@ export const TriangleToggleButton = ({
     const labelPaddingX: number = 1;
 
     // Determine classes for the container and label based on labelPosition prop.
-    let containerClasses: string = "flex items-center ";
+    let containerClasses: string = "flex items-center min-w-5.5 sm:min-w-6 md:min-w-6.5 lg:min-w-7 ";
     let labelClasses: string = "";
     switch (labelPosition) {
         case "TOP":
@@ -67,23 +67,6 @@ export const TriangleToggleButton = ({
             containerClasses += "flex-row-reverse";
             labelClasses += `pl-${labelPaddingX}`;
             break;
-    }
-
-    const createViableButtonState = (option: ToggleButtonOption): TriangleToggleButtonState => {
-        let thumbClass: ThumbPosClass = "leftOption";
-        switch (buttonState.currOption) {
-            case topOption:
-                thumbClass = "topOption";
-                break;
-            case rightOption:
-                thumbClass = "rightOption";
-                break;
-        }
-        
-        return {
-            currOption: option,
-            thumbPosClass: thumbClass
-        };
     }
 
     /**

@@ -1,4 +1,4 @@
-// import { ThemeButtons } from "@/components/features/theme-buttons";
+import { ThemeButtons } from "@/components/features/theme-buttons";
 import { TriangleToggleButton } from "@/components/ui/triangle-toggle-button";
 
 export default function Home() {
@@ -22,10 +22,10 @@ export default function Home() {
             }
           }
         }
-        labelPosition="TOP"
+        labelPosition="LEFT"
       />
 
-      {/* <h1 className="text-3xl font-semibold text-center">
+      <h1 className="text-3xl font-semibold text-center">
         Tailwind CSS v4.0 Theme Colors Example
       </h1>
       <div className="container mx-auto flex flex-wrap items-center justify-center gap-4">
@@ -47,7 +47,7 @@ export default function Home() {
           <span>bg-card</span>
         </div>
         <ThemeButtons />
-      </div> */}
+      </div>
       
     </div>
   );
