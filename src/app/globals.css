@@ -9,6 +9,7 @@
   --font-mono: var(--font-geist-mono);
 
   --color-card: hsl(207 97% 12%);
+  --color-accent: hsl(190 92% 66%);
   --color-background-light: hsl(0 0% 100%);
   --color-background-dark: hsl(207 95% 8%);
   --color-background-custom: hsl(187 71% 82%);
@@ -18,15 +19,18 @@
 @layer base {
   [data-theme="light"] {
     --color-card: hsl(207 97% 12%);
+    --color-accent: hsl(190 92% 66%);
   }
   [data-theme="dark"] {
     --color-card: hsl(0 0% 96%);
+    --color-accent: hsl(225 73% 43%);
   }
   [data-theme="custom"] {
     --color-card: hsl(182, 87%, 39%);
   }
   [data-theme="pastel"] {
     --color-card: hsl(291 46% 83%);
+    --color-accent: hsl(151, 65%, 73%);
   }
 }
 
@@ -46,10 +50,39 @@
   background-color: var(--color-background-pastel);
 }
 
+/* Creates a isosceles triangle where one side is horizontally flat on the bottom and one corner sticks straight upwards. Used for a 3-way toggle.*/
 .triangle {
+  position: relative;
   width: 100%;
   aspect-ratio: 1;
   clip-path: polygon(50% 0,100% 100%,0 100%);
+  background-color: var(--color-card);
+}
+
+/* The thumb of the 3-way toggle triangle should also have the triangle class, plus the thumb. It is meant to fit inside a corner of the larger triangle.*/
+.triangle .thumb {
+  position: absolute;
+  width: 30%;
+  background-color: var(--color-accent);
+}
+
+.triangle.thumb.leftOption,
+.triangle.thumb.thumb.rightOption {
+  bottom: 5%;
+}
+
+.triangle.thumb.leftOption {
+  left: 5%;
+}
+
+.triangle.thumb.topOption {
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.triangle.thumb.rightOption {
+  right: 5%;
 }
 
 .triangle-rounded {
