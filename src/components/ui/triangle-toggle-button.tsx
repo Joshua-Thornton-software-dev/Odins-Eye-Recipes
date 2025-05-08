@@ -40,8 +40,6 @@ export const TriangleToggleButton = ({
         currOption: leftOption,
         thumbPosClass: "leftOption"
     });
-    // Whether or not to apply the transition css. Not applied on the first render.
-    const [ applyTransition, setApplyTransition ] = useState<boolean>(false);
 
     // Determine classes for the container and label based on labelPosition prop.
     let containerClasses: string = "flex justify-start items-center ";
@@ -92,8 +90,6 @@ export const TriangleToggleButton = ({
     }
 
     const handleTriangleToggleButtonClick = (/*e: MouseEventHandler<HTMLButtonElement>*/) => {
-        // Transitions should be applied from now on.
-        if (!applyTransition) setApplyTransition(true);
         selectNextOption();
     };
     
@@ -111,11 +107,11 @@ export const TriangleToggleButton = ({
             {/* Button, which takes the shape of the trianle behind the thumb */}
             <div className="flex-shrink-0 w-5.5 sm:w-6 md:w-6.5 lg:w-7">
                 <button
-                    className={`triangle cursor-pointer shadow ${applyTransition && "transition-colors ease-in"}`}
+                    className={`triangle cursor-pointer shadow`}
                     onClick={handleTriangleToggleButtonClick}
                 >
                     <div
-                        className={`triangle thumb ${buttonState.thumbPosClass} ${applyTransition && "transition-all ease-in"}`}
+                        className={`triangle thumb ${buttonState.thumbPosClass}`}
                     />
                 </button>
             </div>

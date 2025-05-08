@@ -63,27 +63,31 @@
 /* The thumb of the 3-way toggle triangle should also have the triangle class, plus the thumb. It is meant to fit inside a corner of the larger triangle.*/
 .triangle .thumb {
   position: absolute;
-  width: 42%;
+  width: calc(50% - var(--percent-triangle-thumb-offset));
   background-color: var(--color-accent);
-}
 
-.triangle.thumb.leftOption,
-.triangle.thumb.thumb.rightOption {
-  bottom: calc(var(--percent-triangle-thumb-offset) - 2%);
+  transition-property: all;
+  transition-duration: 0.35s;
+  transition-timing-function: ease-in-out;
+
+  left: var(--percent-triangle-thumb-offset);
+  transform: translateX(50%) translateY(0);
 }
 
 .triangle.thumb.leftOption {
-  left: var(--percent-triangle-thumb-offset);
+  top: calc(100% - var(--percent-triangle-thumb-offset));
+  transform: translateX(0%) translateY(-90%);
 }
 
 .triangle.thumb.topOption {
   top: var(--percent-triangle-thumb-offset);
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(0);
 }
 
 .triangle.thumb.rightOption {
-  right: var(--percent-triangle-thumb-offset);
+  top: calc(100% - var(--percent-triangle-thumb-offset));
+  transform: translateX(100%) translateY(-90%);
 }
 
 .triangle-rounded {
