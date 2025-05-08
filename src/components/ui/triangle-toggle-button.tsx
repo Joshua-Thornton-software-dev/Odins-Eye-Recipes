@@ -43,29 +43,28 @@ export const TriangleToggleButton = ({
     // Whether or not to apply the transition css. Not applied on the first render.
     const [ applyTransition, setApplyTransition ] = useState<boolean>(false);
 
-    // Gears & Levers.
-    const labelPaddingY: number = 1;
-    const labelPaddingX: number = 1;
-
     // Determine classes for the container and label based on labelPosition prop.
-    let containerClasses: string = "flex items-center min-w-5.5 sm:min-w-6 md:min-w-6.5 lg:min-w-7 ";
-    let labelClasses: string = "";
+    let containerClasses: string = "flex justify-start items-center ";
+    let labelWrapperClasses: string = "w-12 sm:w-13 md:14 lg:w-15 flex-shrink-0 ";
+    let labelTextClasses: string = "";
     switch (labelPosition) {
         case "TOP":
             containerClasses += "flex-col";
-            labelClasses += `pb-${labelPaddingY}`;
+            labelWrapperClasses = "pb-1";
             break;
         case "BOTTOM":
             containerClasses += "flex-col-reverse";
-            labelClasses += `pt-${labelPaddingY}`;
+            labelWrapperClasses = "pt-1";
             break;
         case "LEFT":
             containerClasses += "flex-row";
-            labelClasses += `pr-${labelPaddingX}`;
+            labelWrapperClasses += "pr-1.5 text-right";
+            labelTextClasses += "truncate";
             break;
         case "RIGHT":
             containerClasses += "flex-row-reverse";
-            labelClasses += `pl-${labelPaddingX}`;
+            labelWrapperClasses += "pl-1.5 text-left";
+            labelTextClasses += "truncate";
             break;
     }
 
@@ -97,25 +96,29 @@ export const TriangleToggleButton = ({
         if (!applyTransition) setApplyTransition(true);
         selectNextOption();
     };
-
+    
     return (
         // Container
         <div className={containerClasses}> 
             {/* Label */}
             {labelPosition &&
-                <div className={labelClasses}>
+            <div className={labelWrapperClasses}>
+                <div className={labelTextClasses}>
                     {buttonState.currOption.label}
                 </div>
+            </div>
             }
             {/* Button, which takes the shape of the trianle behind the thumb */}
-            <button
-                className={`triangle cursor-pointer shadow ${applyTransition && "transition-colors ease-in"}`}
-                onClick={handleTriangleToggleButtonClick}
-            >
-                <div
-                    className={`triangle thumb ${buttonState.thumbPosClass} ${applyTransition && "transition-all ease-in"}`}
-                />
-            </button>
+            <div className="flex-shrink-0 w-5.5 sm:w-6 md:w-6.5 lg:w-7">
+                <button
+                    className={`triangle cursor-pointer shadow ${applyTransition && "transition-colors ease-in"}`}
+                    onClick={handleTriangleToggleButtonClick}
+                >
+                    <div
+                        className={`triangle thumb ${buttonState.thumbPosClass} ${applyTransition && "transition-all ease-in"}`}
+                    />
+                </button>
+            </div>
         </div>
     );
 }
